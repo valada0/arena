@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARENA+ | Campeonatos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-client.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <a href="index.html" class="logo">ARENA<span>+</span></a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#criar">Criar campeonato</a>
+      <a href="#campeonatos">Campeonatos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="apresentacao" id="inicio">
+      <span class="etiqueta">SUA COMPETIÇÃO COMEÇA AQUI</span>
+      <h1>Transforme seu esporte<br>em um grande campeonato.</h1>
+      <p>Crie torneios, organize partidas e acompanhe quem está no topo.</p>
+      <a href="#criar" class="botao">+ Criar campeonato</a>
+    </section>
+
+    <section id="destaqueCampeonato" class="destaque" hidden>
+      <div id="capaDestaque" class="capa-destaque">
+        <div class="conteudo-destaque">
+          <span class="etiqueta">EM DESTAQUE</span>
+          <h2 id="tituloDestaque">Seu campeonato</h2>
+          <p id="detalhesDestaque"></p>
+          <button id="abrirDestaque" class="botao">▶ Abrir campeonato</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="campeonatos">
+      <div class="titulo-secao">
+        <div>
+          <h2>Campeonatos</h2>
+          <p>Consulte as tabelas e encontre uma competição para se inscrever.</p>
+        </div>
+        <span id="totalCampeonatos" class="contador">0 campeonatos</span>
+      </div>
+      <div id="listaCampeonatos" class="carrossel"></div>
+      <p id="mensagemVazia" class="vazio">
+        Você ainda não criou nenhum campeonato. Crie o primeiro!
+      </p>
+    </section>
+
+    <section class="secao painel-criacao" id="criar">
+      <span class="etiqueta">ORGANIZE SUA COMPETIÇÃO</span>
+      <h2>Criar campeonato</h2>
+      <p>Preencha os dados abaixo para começar.</p>
+
+      <form id="formCampeonato">
+        <label for="nomeCampeonato">Nome do campeonato</label>
+        <input id="nomeCampeonato" type="text"
+          placeholder="Ex.: Copa de Futevôlei" required maxlength="70">
+
+        <label for="modalidade">Modalidade esportiva</label>
+        <select id="modalidade" required>
+          <option value="">Escolha um esporte</option>
+          <option value="Futevôlei">Futevôlei</option>
+          <option value="Futebol">Futebol</option>
+          <option value="Futsal">Futsal</option>
+          <option value="Vôlei">Vôlei</option>
+          <option value="Vôlei de praia">Vôlei de praia</option>
+          <option value="Basquete">Basquete</option>
+          <option value="Tênis">Tênis</option>
+          <option value="Teqball">Teqball</option>
+          <option value="Outro">Outro esporte</option>
+        </select>
+
+        <label for="formato">Formato da competição</label>
+        <select id="formato" required>
+          <option value="todos">Todos contra todos</option>
+          <option value="mata">Mata-mata</option>
+          <option value="dupla">Eliminação dupla</option>
+          <option value="grupos">Fase de grupos + mata-mata</option>
+        </select>
+
+        <p class="ajuda">As duplas e equipes serão adicionadas pelo sistema de inscrição dentro do campeonato.</p>
+        <button type="button" class="aba" id="entrarParaCriar">Entrar para criar</button>
+        <button type="submit" class="botao">Criar campeonato</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#inicio" class="logo">ARENA<span>+</span></a>
+    <p>Seu esporte. Sua competição. Sua história.</p>
+  </footer>
+</body>
+</html>

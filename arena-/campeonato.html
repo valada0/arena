@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campeonato | ARENA+</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-client.js" defer></script>
+  <script src="campeonato.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <a href="index.html" class="logo">ARENA<span>+</span></a>
+    <nav><a href="index.html">← Voltar ao início</a></nav>
+  </header>
+  <main>
+    <section class="apresentacao">
+      <span class="etiqueta">CENTRAL DA COMPETIÇÃO</span>
+      <h1 id="tituloCampeonato">Carregando campeonato...</h1>
+      <p id="infoCampeonato"></p>
+    </section>
+    <section class="secao painel-inscricoes">
+      <div class="titulo-secao">
+        <div>
+          <h2>Inscrições</h2>
+          <p>Inscreva sua dupla ou equipe nesta competição.</p>
+        </div>
+      </div>
+      <div id="conteudoInscricoes"></div>
+    </section>
+    <section class="secao">
+      <div class="titulo-secao">
+        <div>
+          <h2 id="tituloGerenciamento">Gerenciar campeonato</h2>
+          <p>Registre resultados e acompanhe a competição.</p>
+        </div>
+        <div class="acoes-gerenciamento">
+          <button class="botao" id="iniciarCampeonato">Encerrar inscrições e montar tabela</button>
+          <button class="aba" id="editarCampeonato">Editar campeonato</button>
+          <button class="aba" id="sortearGrupos">Sortear grupos</button>
+          <button class="aba" id="sortearMata">Sortear mata-mata</button>
+          <button class="aba" id="voltarRodada">Voltar uma rodada</button>
+          <button class="botao-desfazer" id="desfazerCampeonato">Reiniciar campeonato</button>
+        </div>
+      </div>
+      <div class="abas">
+        <button class="aba ativa" data-aba="jogos">Jogos</button>
+        <button class="aba" data-aba="classificacao">Classificação</button>
+        <button class="aba" data-aba="chaveamento">Chaveamento</button>
+      </div>
+      <div id="conteudoCampeonato" class="conteudo-fases"></div>
+    </section>
+  </main>
+  <dialog id="modalPlacar" class="modal-placar">
+    <form method="dialog" class="painel-modal" id="formPlacar">
+      <div class="cabecalho-modal">
+        <div>
+          <span class="etiqueta-modal">DETALHES DA PARTIDA</span>
+          <h2>Editar placar</h2>
+        </div>
+        <button type="button" class="fechar-modal" id="fecharModal" aria-label="Fechar">×</button>
+      </div>
+      <p id="confrontoModal" class="confronto-modal"></p>
+      <div class="campos-placar-modal">
+        <label><span id="equipeAModal"></span><input id="placarAModal" type="number" min="0" step="1"></label>
+        <span>×</span>
+        <label><span id="equipeBModal"></span><input id="placarBModal" type="number" min="0" step="1"></label>
+      </div>
+      <label class="campo-edicao" for="quadraJogoModal">Quadra
+        <select id="quadraJogoModal"></select>
+      </label>
+      <p class="mensagem-info">A situação é definida automaticamente conforme a ocupação da quadra.</p>
+      <div class="desistencia-modal">
+        <span>Registrar desistência:</span>
+        <button type="button" class="botao-desistencia" id="desistenciaA"></button>
+        <button type="button" class="botao-desistencia" id="desistenciaB"></button>
+      </div>
+      <div class="acoes-modal">
+        <button type="button" class="aba" id="cancelarModal">Cancelar</button>
+        <button type="submit" class="botao">Salvar placar</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="modalCampeonato" class="modal-placar">
+    <form class="painel-modal" id="formCampeonatoEdicao">
+      <div class="cabecalho-modal">
+        <h2>Editar campeonato</h2>
+        <button type="button" class="fechar-modal" id="fecharEdicao" aria-label="Fechar">×</button>
+      </div>
+      <p class="mensagem-info">Os participantes entram pelo sistema de inscrição.</p>
+      <label class="campo-edicao" for="nomeCampeonatoEdicao">Nome do campeonato
+        <input id="nomeCampeonatoEdicao" type="text" required maxlength="80">
+      </label>
+      <label class="campo-edicao" for="modalidadeCampeonatoEdicao">Modalidade
+        <input id="modalidadeCampeonatoEdicao" type="text" required maxlength="50">
+      </label>
+      <label class="campo-edicao" for="quadrasCampeonatoEdicao">Quantidade de quadras
+        <input id="quadrasCampeonatoEdicao" type="number" min="1" max="100" step="1" required>
+      </label>
+      <div class="acoes-modal">
+        <button type="button" class="aba" id="cancelarEdicao">Cancelar</button>
+        <button type="submit" class="botao">Salvar alterações</button>
+      </div>
+    </form>
+  </dialog>
+  <footer>
+    <a href="index.html" class="logo">ARENA<span>+</span></a>
+    <p>Seu esporte. Sua competição. Sua história.</p>
+  </footer>
+</body>
+</html>
